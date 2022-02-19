@@ -1,6 +1,6 @@
 package com.example.springBootApp.entity;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,9 +13,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
@@ -40,11 +44,15 @@ public class Email {
 	@Enumerated(EnumType.ORDINAL)
 	private Status status;
 
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "sender_id", referencedColumnName = "id")
+	private User sender;
+
 	@ManyToMany(targetEntity = User.class)
-	@JoinTable(
-			name = "email_receivers", 
-			joinColumns = @JoinColumn(name = "email_id", referencedColumnName = "id"), 
-			inverseJoinColumns = @JoinColumn(name = "receiver_id", referencedColumnName = "id"))
+	@JoinTable(name = "email_receivers", 
+	joinColumns = @JoinColumn(name = "email_id", referencedColumnName = "id"), 
+	inverseJoinColumns = @JoinColumn(name = "receiver_id", referencedColumnName = "id"))
 	Set<User> receivers;
 
 }
