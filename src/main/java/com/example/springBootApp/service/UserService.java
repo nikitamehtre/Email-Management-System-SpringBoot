@@ -1,8 +1,6 @@
 package com.example.springBootApp.service;
 
 import java.util.List;
-
-import com.example.springBootApp.entity.Email;
 import com.example.springBootApp.entity.User;
 
 public interface UserService {
@@ -14,5 +12,6 @@ public interface UserService {
 	List<User> getUserByLastName(String lastName);
 	List<User> getUserByEmail(String email);
 	void deleteuser(long id);
+	User updateUserPartially(User user, long id);
 
 }

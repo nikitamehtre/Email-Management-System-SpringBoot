@@ -69,8 +69,6 @@ public class EmailServiceImpl implements EmailService {
 
 	@Override
 	public void deleteEmail(long id) {
-//		emailRepository.findById(id).orElseThrow(
-//				()->new ResourseNotFoundException("Email", "id", id));
 		emailRepository.deleteById(id);
 	}
 
