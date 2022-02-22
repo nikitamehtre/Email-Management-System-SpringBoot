@@ -63,6 +63,16 @@ public class UserController {
 		return userService.getUserByEmail(email);
 	}
 	
+	@GetMapping("/userByFirstNameAndLastName")
+	public List<User> getUserByFirstNameAndLastName(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
+		return userService.getUserByFirstNameAndLastName(firstName, lastName);
+	}
+	
+	@GetMapping("/userByFirstNameOrLastName")
+	public List<User> getUserByFirstNameOrLastName(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName){
+		return userService.getUserByFirstNameOrLastName(firstName, lastName);
+	}
+	
 	@PutMapping("{id}")
 	public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user){
 		

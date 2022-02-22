@@ -109,9 +109,26 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(newUser);
 		return newUser;
 	}
+
+	@Override
+	public List<User> getUserByFirstNameAndLastName(String firstName, String lastName) {
+		return userRepository.findByFirstNameAndLastName(firstName, lastName);
+	}
+
+	@Override
+	public List<User> getUserByFirstNameOrLastName(String firstName, String lastName) {
+		return userRepository.findByFirstNameOrLastName(firstName, lastName);
+	}
 	
+	@Override
+	public List<User> getUsersByFirstName(String firstName){
+		return userRepository.findUsersByFirstName(firstName);
+	}
 	
-	
+	@Override
+	public List<User> getUsersByFirstNameAndLastName(String firstName, String lastName){
+		return userRepository.findUsersByFirstNameAndlastName(firstName, lastName);
+	}
 
 	@Override
 	public List<User> importUsers(List<User> users) {

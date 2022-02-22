@@ -76,5 +76,4 @@ public class EmailServiceImpl implements EmailService {
 	public List<Email> getEmailsBySenderId(long user_id) {
 		return emailRepository.findBySenderId(user_id);
 	}
-
 }
