@@ -72,4 +72,9 @@ public class EmailServiceImpl implements EmailService {
 		emailRepository.deleteById(id);
 	}
 
+	@Override
+	public List<Email> getEmailsBySenderId(long user_id) {
+		return emailRepository.findBySenderId(user_id);
+	}
+
 }

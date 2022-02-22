@@ -11,5 +11,6 @@ public interface EmailService {
 	void deleteEmail(long id);
 //	CRUD : Create Read Update Delete
 	List<Email> getEmailBySubject(String subject);
+	List<Email> getEmailsBySenderId(long user_id);
 	
 }

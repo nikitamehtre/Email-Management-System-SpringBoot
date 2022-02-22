@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springBootApp.entity.Email;
@@ -44,6 +45,14 @@ public class EmailController {
 	public List<Email> getEmailBySubject(@PathVariable("subject")String subject){
 		return emailService.getEmailBySubject(subject);
 	}
+	
+//	api/emails/sent?user_id=1
+	@GetMapping("/sent")
+	public List<Email> getSentEmails(@RequestParam long user_id){
+		return emailService.getEmailsBySenderId(user_id);
+	}
+	
+	
 
 	@PutMapping("{id}")
 	public ResponseEntity<Email> updateEmail(@PathVariable("id") long id, @RequestBody Email email) {

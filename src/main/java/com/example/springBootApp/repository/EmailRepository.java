@@ -11,5 +11,6 @@ import com.example.springBootApp.entity.Email;
 public interface EmailRepository extends JpaRepository<Email, Long>{
 
 	List<Email> findBySubject(String subject);
+	List<Email> findBySenderId(long user_id);
 
 }
