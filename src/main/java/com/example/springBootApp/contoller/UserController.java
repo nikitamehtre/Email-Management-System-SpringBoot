@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springBootApp.entity.User;
@@ -32,9 +33,13 @@ public class UserController {
 		return new ResponseEntity<User>(userService.saveUser(user),HttpStatus.CREATED);
 	}
 	
+	@PostMapping("/import")
+	public List<User> importUsers(@RequestBody List<User> users){
+		return userService.importUsers(users);
+	}
+	
 	@GetMapping
-	public List<User> getAllUser()
-	{
+	public List<User> getAllUser(){
 		return userService.getAllUser();
 	}
 	

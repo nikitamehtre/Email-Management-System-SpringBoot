@@ -112,4 +112,9 @@ public class UserServiceImpl implements UserService {
 	
 	
 	
+
+	@Override
+	public List<User> importUsers(List<User> users) {
+		return userRepository.saveAll(users);
+	}
 }

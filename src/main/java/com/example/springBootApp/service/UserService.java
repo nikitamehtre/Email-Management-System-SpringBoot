@@ -13,5 +13,6 @@ public interface UserService {
 	List<User> getUserByEmail(String email);
 	void deleteuser(long id);
 	User updateUserPartially(User user, long id);
+	List<User> importUsers(List<User> users);
 
 }
