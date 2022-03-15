@@ -20,7 +20,7 @@ import lombok.Data;
 @Table(name = "users")
 public class User {
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	@Column
 	private long id;
 	
@@ -39,11 +39,14 @@ public class User {
 	@Column(name="contact_number")
 	private String contactNumber;
 	
-	@ManyToMany(mappedBy = "receivers")
-	Set<Email> receivedEmails;
+	private boolean active;
+	private String roles;
 	
-	@JsonManagedReference
-	@OneToMany(mappedBy = "sender")
-	private Set<Email> sentEmails;
+//	@ManyToMany(mappedBy = "receivers")
+//	Set<Email> receivedEmails;
+	
+//	@JsonManagedReference
+//	@OneToMany(mappedBy = "sender")
+//	private Set<Email> sentEmails;
 
 }
