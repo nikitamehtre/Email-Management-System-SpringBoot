@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.springBootApp.entity.Email;
 import com.example.springBootApp.entity.User;
 import com.example.springBootApp.service.UserService;
 
@@ -38,9 +40,16 @@ public class UserController {
 		return userService.importUsers(users);
 	}
 	
+	@GetMapping("/")
+	String index() {
+		return "index";
+	}
+	
 	@GetMapping
-	public List<User> getAllUser(){
-		return userService.getAllUser();
+	public String getAllUser(Model model) {
+		List<User> users = userService.getAllUser();
+		model.addAttribute("users", users);
+		return "list-users";
 	}
 	
 	@GetMapping("{id}")
