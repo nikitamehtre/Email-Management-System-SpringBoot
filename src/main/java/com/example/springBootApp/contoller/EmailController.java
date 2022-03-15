@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.springBootApp.entity.Email;
 import com.example.springBootApp.service.EmailService;
 
-@RestController
+@Controller
 @RequestMapping("/api/emails")
 public class EmailController {
 	private EmailService emailService;
