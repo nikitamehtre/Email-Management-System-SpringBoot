@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	
+	<meta charset="ISO-8859-1">
+	<meta charset="utf-8">
+	<title> Add User Details </title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" >
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	
+	<form th:action="@{/saveUser}" th:object="${user}" method="post" class="form needs-validation">
+		<div class="container">
+			<div class="jumbotron">
+				<!--containing element to wrap site contents-->
+				<h1> Registration Form </h1>
+				<P> <mark> Please fill the details to create an account.</p>
+			</div>	
+
+
+		<div class="alert alert-success">
+	  		<strong>Success!</strong> Your Email Account is Successfully Created.
+		</div>
+
+
+
+		<div class="form-group" ><b>		
+
+			<label for="firstName">First Name: </label>
+			<input type="text" class="form-control" placeholder="Enter first name" id ="firstName">	
+
+			<label for="lastname">Last Name:</label>
+			<input type = "text" class="form-control" placeholder="Enter last name" id ="lastName">
+
+			<label for="contactNumber">Contact Number:</label>
+			<input type = "text" class="form-control" placeholder ="Enter contact number">
+
+			<label for="email">Email address:</label>
+			<input type = "email" class="form-control" placeholder ="Username@gmail.com" id ="email">
+
+			<label for="pwd">Password:</label>
+			<input type = "password" class="form-control" placeholder="Enter Password" id ="pwd">
+
+			<label for="pwd">Confirm Password:</label>
+			<input type = "password" class="form-control" placeholder="Repeat Password" id ="pwd">
+		</div> </b>
+
+		<div class="dropdown">
+			<label for="Gender">Gender:</label>
+			<select>
+			  <option value="M">Male</option>
+			  <option value="F">Female</option>
+			  <option value="O">Others</option>
+			</select>
+		</div>	
+
+		<div class="custom-control custom-checkbox mb-3">
+      		<input type="checkbox" class="custom-control-input" id="customCheck">
+      		<label class="custom-control-label" for="customCheck">Remember me</label>
+  		</div>
+
+		<div>
+			<button type="Submit" class="btn btn-success">Submit</button>
+			<a  th:href = "@{/getUsers}" class=" btn btn-primary btn-md mb-3 float-right"> User List</a></li>
+		</div>	
+
+		<div class="container signin">
+    		<p>Already have an account? <a href="file:///C:/Users/MY%20PC/Desktop/.html/Login.html"><i>Sign in</i> </a> </p>
+ 		</div>	
+
+
+	</form>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+</body>	
+</html>
