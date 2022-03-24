@@ -79,7 +79,6 @@ public class EmailServiceImpl implements EmailService {
 
 	@Override
 	public List<Email> getEmailsByReceiverId(long user_id) {
-//		TODO
-		return emailRepository.findBySenderId(user_id);
+		return emailRepository.findByReceivers_Id(user_id);
 	}
 }

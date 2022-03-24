@@ -13,6 +13,7 @@ public interface EmailRepository extends JpaRepository<Email, Long>{
 
 	List<Email> findBySubject(String subject);
 	List<Email> findBySenderId(long user_id);
+	List<Email> findByReceivers_Id(long user_id);
 
 //	List<Email> findBySubjectAndcreatedAt(String subject, String createdat);
 
