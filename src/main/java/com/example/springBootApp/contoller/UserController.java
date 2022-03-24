@@ -1,6 +1,7 @@
 package com.example.springBootApp.contoller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -68,7 +69,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/userByEmail/{email}")
-	public List<User> getUserByEmail(@PathVariable("email")String email){
+	public Optional<User> getUserByEmail(@PathVariable("email")String email){
 		return userService.getUserByEmail(email);
 	}
 	
