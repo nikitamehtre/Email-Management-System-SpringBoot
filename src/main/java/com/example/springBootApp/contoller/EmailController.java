@@ -42,6 +42,8 @@ public class EmailController {
 	public String getAllEmail(Model model) {
 		List<Email> emails = emailService.getAllEmail();
 		model.addAttribute("emails", emails);
+		model.addAttribute("title", "All emails");
+		model.addAttribute("count", emails.size());
 		return "list-emails";
 	}
 	
@@ -49,6 +51,9 @@ public class EmailController {
 	public String getSentEmail(Model model) {
 		List<Email> emails = emailService.getEmailsBySenderId(1);
 		model.addAttribute("emails", emails);
+		model.addAttribute("title", "Sent emails");
+		model.addAttribute("count", emails.size());
+
 		return "list-emails";
 	}
 	
@@ -56,6 +61,9 @@ public class EmailController {
 	public String getReceivedEmail(Model model) {
 		List<Email> emails = emailService.getEmailsByReceiverId(1);
 		model.addAttribute("emails", emails);
+		model.addAttribute("title", "Received emails");
+		model.addAttribute("count", emails.size());
+
 		return "list-emails";
 	}
 	
