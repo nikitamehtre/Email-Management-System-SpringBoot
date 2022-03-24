@@ -42,7 +42,7 @@ public class EmailServiceImpl implements EmailService {
 
 		else {
 
-			throw new ResourceNotFound("Employee", "Id", id);
+			throw new ResourceNotFound("Email", "Id", id);
 		}
 	}
 
@@ -74,6 +74,12 @@ public class EmailServiceImpl implements EmailService {
 
 	@Override
 	public List<Email> getEmailsBySenderId(long user_id) {
+		return emailRepository.findBySenderId(user_id);
+	}
+
+	@Override
+	public List<Email> getEmailsByReceiverId(long user_id) {
+//		TODO
 		return emailRepository.findBySenderId(user_id);
 	}
 }

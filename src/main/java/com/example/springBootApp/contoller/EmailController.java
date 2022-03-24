@@ -33,10 +33,10 @@ public class EmailController {
 		return new ResponseEntity<Email>(emailService.saveEmail(email), HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/")
-	String index() {
-		return "index";
-	}
+//	@GetMapping("/")
+//	String index() {
+//		return "index";
+//	}
 
 	@GetMapping
 	public String getAllEmail(Model model) {
@@ -44,7 +44,21 @@ public class EmailController {
 		model.addAttribute("emails", emails);
 		return "list-emails";
 	}
-
+	
+	@GetMapping("/sent")
+	public String getSentEmail(Model model) {
+		List<Email> emails = emailService.getEmailsBySenderId(1);
+		model.addAttribute("emails", emails);
+		return "list-emails";
+	}
+	
+	@GetMapping("/received")
+	public String getReceivedEmail(Model model) {
+		List<Email> emails = emailService.getEmailsByReceiverId(1);
+		model.addAttribute("emails", emails);
+		return "list-emails";
+	}
+	
 	@GetMapping("{id}")
 	public ResponseEntity<Email> getEmailById(@PathVariable long id) {
 		return new ResponseEntity<Email>(emailService.getEmailById(id), HttpStatus.OK);
@@ -56,10 +70,10 @@ public class EmailController {
 	}
 	
 //	api/emails/sent?user_id=1
-	@GetMapping("/sent")
-	public List<Email> getSentEmails(@RequestParam long user_id){
-		return emailService.getEmailsBySenderId(user_id);
-	}
+//	@GetMapping("/sent")
+//	public List<Email> getSentEmails(@RequestParam long user_id){
+//		return emailService.getEmailsBySenderId(user_id);
+//	}
 	
 	
 
