@@ -1,8 +1,6 @@
 package com.example.springBootApp.service;
 
 import java.util.List;
-import java.util.Optional;
-
 import com.example.springBootApp.entity.User;
 
 public interface UserService {
@@ -12,7 +10,7 @@ public interface UserService {
 	User updateUser(User user, long id);
 	List<User> getUserByFirstName(String firstName);
 	List<User> getUserByLastName(String lastName);
-	Optional<User> getUserByEmail(String email);
+	List<User> getUserByEmail(String email);
 	List<User> getUserByFirstNameAndLastName(String firstName, String lastName);
 	List<User> getUserByFirstNameOrLastName(String firstName, String lastName);
 	void deleteuser(long id);

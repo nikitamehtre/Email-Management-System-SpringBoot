@@ -1,7 +1,6 @@
 package com.example.springBootApp.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +16,7 @@ public interface UserRepository extends JpaRepository<User,Long>{
 
 	List<User> findByLastName(String lastName);
 
-	Optional<User> findByEmail(String email);
+	List<User> findByEmail(String email);
 
 	List<User> findByFirstNameAndLastName(String firstName, String lastName);
 
