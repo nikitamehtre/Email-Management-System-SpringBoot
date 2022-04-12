@@ -41,28 +41,41 @@ public class EmailController {
 	@GetMapping
 	public String getAllEmail(Model model) {
 		List<Email> emails = emailService.getAllEmail();
+		List<Email> sentEmails = emailService.getEmailsBySenderId(1);
+		List<Email> receivedEmails = emailService.getEmailsByReceiverId(1);
+		
+		
 		model.addAttribute("emails", emails);
 		model.addAttribute("title", "All emails");
 		model.addAttribute("count", emails.size());
+		model.addAttribute("sentCount", sentEmails.size());
+		model.addAttribute("receivedCount", receivedEmails.size());
 		return "list-emails";
 	}
 	
 	@GetMapping("/sent")
 	public String getSentEmail(Model model) {
-		List<Email> emails = emailService.getEmailsBySenderId(1);
-		model.addAttribute("emails", emails);
+		List<Email> emails = emailService.getAllEmail();
+		List<Email> sentEmails = emailService.getEmailsBySenderId(1);
+		List<Email> receivedEmails = emailService.getEmailsByReceiverId(1);
+		model.addAttribute("emails", sentEmails);
 		model.addAttribute("title", "Sent emails");
 		model.addAttribute("count", emails.size());
-
+		model.addAttribute("sentCount", sentEmails.size());
+		model.addAttribute("receivedCount", receivedEmails.size());
 		return "list-emails";
 	}
 	
 	@GetMapping("/received")
 	public String getReceivedEmail(Model model) {
-		List<Email> emails = emailService.getEmailsByReceiverId(1);
-		model.addAttribute("emails", emails);
+		List<Email> emails = emailService.getAllEmail();
+		List<Email> sentEmails = emailService.getEmailsBySenderId(1);
+		List<Email> receivedEmails = emailService.getEmailsByReceiverId(1);
+		model.addAttribute("emails", receivedEmails);
 		model.addAttribute("title", "Received emails");
 		model.addAttribute("count", emails.size());
+		model.addAttribute("sentCount", sentEmails.size());
+		model.addAttribute("receivedCount", receivedEmails.size());
 
 		return "list-emails";
 	}

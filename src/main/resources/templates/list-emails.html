@@ -14,10 +14,16 @@
 				<div class="list-group">
 				  <a href="/api/emails" class="list-group-item list-group-item-action" aria-current="true" th:classappend="${title == 'All emails' ? 'active' : ''}">
 				    Emails
-				    <span class="badge bg-primary rounded-pill" th:text="${count}"></span>
+				    <span class="badge bg-secondary rounded-pill" th:text="${count}"></span>
 				  </a>
-				  <a href="/api/emails/sent" class="list-group-item list-group-item-action" th:classappend="${title == 'Sent emails'? 'active' : ''}">Sent</a>
-				  <a href="/api/emails/received" class="list-group-item list-group-item-action" th:classappend="${title == 'Received emails' ? 'active' : ''}">Received</a>
+				  <a href="/api/emails/sent" class="list-group-item list-group-item-action" th:classappend="${title == 'Sent emails'? 'active' : ''}">
+				  	Sent
+				  	<span class="badge bg-secondary rounded-pill" th:text="${sentCount}"></span>
+				  </a>
+				  <a href="/api/emails/received" class="list-group-item list-group-item-action" th:classappend="${title == 'Received emails' ? 'active' : ''}">
+				  	Received
+				  	<span class="badge bg-secondary rounded-pill" th:text="${receivedCount}"></span>
+				  </a>
 				  <a class="list-group-item list-group-item-action disabled">Bin</a>
 				  <a class="list-group-item list-group-item-action disabled">Spam</a>
 				</div>
