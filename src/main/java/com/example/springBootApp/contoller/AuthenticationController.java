@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping("/auth")
@@ -28,8 +27,9 @@ public class AuthenticationController {
 	}
 
 	@PostMapping("/register-submit")
-	public void submitRegister() {
-		System.out.println("SubmitRegistration");
+	public String submitRegister(@RequestParam String name) {
+		System.out.println(name);
+		return "register";
 	}
 
 

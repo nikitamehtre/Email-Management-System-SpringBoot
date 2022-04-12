@@ -39,7 +39,9 @@ public class User {
 	@Column(name="contact_number")
 	private String contactNumber;
 	
+	@Column
 	private boolean active;
+	@Column
 	private String roles;
 	
 //	@ManyToMany(mappedBy = "receivers")
