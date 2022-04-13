@@ -19,7 +19,7 @@ public class AuthenticationController {
 	@PostMapping("/login-submit")
 	public String submitLogin(@RequestParam String email, @RequestParam String password) {
 		System.out.println(email + password);
-		return "login";
+		return "redirect:/api/emails";
 	}
 
 	@GetMapping("/register")
@@ -28,8 +28,9 @@ public class AuthenticationController {
 	}
 
 	@PostMapping("/register-submit")
-	public void submitRegister() {
+	public String submitRegister() {
 		System.out.println("SubmitRegistration");
+		return "redirect:/api/emails";
 	}
 
 
