@@ -42,7 +42,9 @@
 				  <tbody>
 				    <tr th:each="email:${emails}">
 				      <td th:text="${email.sender!=null}?${email.sender.email}:'not specified'"></td>
-				      <td th:text="${email.subject}"></td>
+				      <td>
+				      	<a th:href = "@{'/api/emails/' + ${email.id}}" th:text="${email.subject}"></a>
+				      </td>
 				      <td th:text="${email.createdAt}"></td>
 				    </tr>
 				  </tbody>

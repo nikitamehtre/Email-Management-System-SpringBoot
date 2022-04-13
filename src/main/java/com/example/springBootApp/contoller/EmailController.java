@@ -100,6 +100,7 @@ public class EmailController {
 		email.setBody(body);
 		email.setSender(sender);
 		email.setReceivers(receivers);
+		email.setCreatedAt(new java.util.Date());
 		
 		emailService.saveEmail(email);
 		return "redirect:/api/emails/sent";
@@ -111,8 +112,11 @@ public class EmailController {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<Email> getEmailById(@PathVariable long id) {
-		return new ResponseEntity<Email>(emailService.getEmailById(id), HttpStatus.OK);
+	public String getEmailById(@PathVariable long id, Model model) {
+		Email email = emailService.getEmailById(id);
+		model.addAttribute("email", email);
+
+		return "show-email";
 	}
 	
 	@GetMapping("/emailBySubject/{subject}")
