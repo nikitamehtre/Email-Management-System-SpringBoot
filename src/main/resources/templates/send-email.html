@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head :: head">  </head>
+
+<body>
+
+	<div th:insert="fragments/navbar :: navbar">  </div>
+		
+		<div class="container">
+
+		<form action="/api/emails/send-email" method="post">
+		
+		<input type = "hidden" class="form-control" placeholder ="" id ="subject" name="sender" value="1">
+		<div class="form-group">
+			<label for="emails">Email addresses:</label>
+			<input type = "text" class="form-control" placeholder ="@email.com, @email.com" id ="emails" name="emails">
+			</div>
+			
+			<div class="form-group">
+			<label for="subject">Subject:</label>
+			<input type = "text" class="form-control" placeholder ="" id ="subject" name="subject">
+			</div>
+			
+			<div class="form-group">
+			<label for="body">Body:</label>
+			<textarea class="form-control" rows="3" id="body" name="body"></textarea>
+			</div>
+					
+		
+			<div>
+				<button type="Submit" href="#" class="btn btn-success">Submit</button>
+			</div>	
+		
+		
+		</form>
+		
+		</div>
+
+</body>
+</html>

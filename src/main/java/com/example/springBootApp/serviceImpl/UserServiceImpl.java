@@ -2,6 +2,7 @@ package com.example.springBootApp.serviceImpl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -133,5 +134,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> importUsers(List<User> users) {
 		return userRepository.saveAll(users);
+	}
+
+	@Override
+	public Set<User> findByUserEmailIn(String[] emails) {
+		return userRepository.findByEmailIn(emails);
 	}
 }

@@ -1,6 +1,10 @@
 package com.example.springBootApp.contoller;
 
 import java.util.List;
+import java.util.Map;
+
+import org.apache.tomcat.util.http.parser.MediaType;
+import org.hibernate.mapping.Set;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springBootApp.entity.Email;
+import com.example.springBootApp.entity.User;
 import com.example.springBootApp.service.EmailService;
+import com.example.springBootApp.service.UserService;
 
 @Controller
 @RequestMapping("/api/emails")
@@ -78,6 +84,30 @@ public class EmailController {
 		model.addAttribute("receivedCount", receivedEmails.size());
 
 		return "list-emails";
+	}
+	
+	@PostMapping("/send-email")
+	public String postSendEmail(@RequestParam String emails, @RequestParam String subject, @RequestParam String body) {
+		String[] emailsArray = emails.split(",");
+		long sender_id = 1;
+		
+		User sender = emailService.getUserById(sender_id);
+		java.util.Set<User> receivers = emailService.findByUserEmailIn(emailsArray);
+
+		
+		Email email = new Email();
+		email.setSubject(subject);
+		email.setBody(body);
+		email.setSender(sender);
+		email.setReceivers(receivers);
+		
+		emailService.saveEmail(email);
+		return "redirect:/api/emails/sent";
+	}
+	
+	@GetMapping("/send-email")
+	public String getSendEmail(Model model) {
+		return "send-email";
 	}
 	
 	@GetMapping("{id}")

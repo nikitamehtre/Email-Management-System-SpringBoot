@@ -2,13 +2,16 @@ package com.example.springBootApp.serviceImpl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.springBootApp.entity.Email;
+import com.example.springBootApp.entity.User;
 import com.example.springBootApp.exception.ResourceNotFound;
 import com.example.springBootApp.repository.EmailRepository;
+import com.example.springBootApp.repository.UserRepository;
 import com.example.springBootApp.service.EmailService;
 
 @Service
@@ -17,10 +20,20 @@ public class EmailServiceImpl implements EmailService {
 	@Autowired
 	private EmailRepository emailRepository;
 
-	public EmailServiceImpl(EmailRepository emailRepository) {
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	public EmailServiceImpl(EmailRepository emailRepository, UserRepository userRepository) {
 		super();
 		this.emailRepository = emailRepository;
+		this.userRepository = userRepository;
 	}
+
+	public User getUserById(long id) {
+		return userRepository.getById(id);
+	}
+
 
 	@Override
 	public Email saveEmail(Email email) {
@@ -80,5 +93,10 @@ public class EmailServiceImpl implements EmailService {
 	@Override
 	public List<Email> getEmailsByReceiverId(long user_id) {
 		return emailRepository.findByReceivers_Id(user_id);
+	}
+
+	@Override
+	public Set<User> findByUserEmailIn(String[] emails) {
+		return userRepository.findByEmailIn(emails);
 	}
 }
